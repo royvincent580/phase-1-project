@@ -143,4 +143,3 @@ function saveDB(){
 
 // Initialize view
 switchView();
-
