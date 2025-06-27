@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>School Register System</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <nav>
-    <h1>🏫 Glindrum international school</h1>
+    <h1>🏫 Glindrum International School</h1>
     <div class="nav-controls">
+      <label for="roleSwitch">Switch Role:</label>
       <select id="roleSwitch">
         <option value="student">Student</option>
         <option value="teacher">Teacher</option>
         <option value="admin">Admin</option>
       </select>
-      <button id="openModal">➕ Add Student</button>
     </div>
   </nav>
-  <img src="https://www.peponischool.org/wp-content/uploads/2023/04/Admission.jpg" alt="School Banner" class="popup-image" />
+  <img src="https://www.peponischool.org/wp-content/uploads/2023/04/Admission.jpg" alt="school banner" class="popup-image" />
 
   <main>
+    <!-- Student Section -->
     <section id="studentSection" class="role-section">
       <h2>My Profile</h2>
       <form id="profileForm">
@@ -29,45 +30,48 @@
         <input type="text" id="studentAddress" placeholder="Address" required />
         <button type="submit">Update Profile</button>
       </form>
+
       <h2>My Attendance</h2>
       <ul id="attRecords"></ul>
+
       <h2>My Schedule</h2>
       <ul id="classSchedule"></ul>
     </section>
 
+    <!-- Teacher Section -->
     <section id="teacherSection" class="role-section hidden">
       <h2>My Classes</h2>
       <ul id="teacherClasses"></ul>
       <div id="attendanceSheet"></div>
     </section>
 
+    <!-- Admin Section -->
     <section id="adminSection" class="role-section hidden">
       <h2>Admin Panel</h2>
+
+      <h3>Add New Student</h3>
+      <form id="addStudentForm">
+        <input type="text" name="name" placeholder="Full Name" required />
+        <input type="tel" name="contact" placeholder="Contact Number" required />
+        <input type="text" name="address" placeholder="Address" required />
+        <button type="submit">Add Student</button>
+      </form>
+
       <div id="userMgmt">
-        <h3>Students</h3><ul id="adminStudents"></ul>
-        <h3>Teachers</h3><ul id="adminTeachers"></ul>
-        <h3>Classes</h3><ul id="adminClasses"></ul>
+        <h3>Students</h3>
+        <ul id="adminStudents"></ul>
+
+        <h3>Teachers</h3>
+        <ul id="adminTeachers"></ul>
+
+        <h3>Classes</h3>
+        <ul id="adminClasses"></ul>
       </div>
+
       <button id="generateReports">Generate Reports</button>
       <pre id="reportsOutput"></pre>
     </section>
   </main>
-
-  <!-- Pop-up Modal -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <img src="Gemini_Generated_Image_51arg451arg451ar.png" class="modal-image" alt="School Logo" />
-      <h2>Add New Student</h2>
-      <form id="addStudentForm">
-        <input type="text" name="name" placeholder="Full Name" required />
-        <input type="tel" name="contact" placeholder="Contact Number" required />
-       <input type="text" name="address" placeholder="Address" required />
-       
-        <button type="submit">Add Student</button>
-      </form>
-    </div>
-  </div>
 
   <footer>
     <p>📧 Email: Glindruminternational@school.com</p>
@@ -78,4 +82,5 @@
   <script src="index.js"></script>
 </body>
 </html>
+
 
