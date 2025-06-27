@@ -4,6 +4,19 @@
     padding: 0;
     box-sizing: border-box;
 }
+.weather-box {
+  background: #f0f4f8;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem;
+  text-align: center;
+}
+
+.weather-box img {
+  vertical-align: middle;
+  height: 50px;
+}
+
 
 body {
     font-family: Arial, sans-serif;
