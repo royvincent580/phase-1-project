@@ -1,0 +1,32 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "contact": "123-456-7890",
+      "address": "123 Maple St",
+      "attendance": ["2025-06-01", "2025-06-05"],
+      "classes": [101],
+      "photo": ""
+    }
+  ],
+  "teachers": [
+    {
+      "id": 10,
+      "name": "Mr. Adams",
+      "contact": "555-000-1111",
+      "classes": [101]
+    }
+  ],
+  "classes": [
+    {
+      "id": 101,
+      "name": "Math 101",
+      "teacherId": 10,
+      "schedule": "Mon/Wed/Fri 09:00"
+    }
+  ]
+}
+
+
+
