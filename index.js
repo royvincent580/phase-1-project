@@ -151,6 +151,34 @@ document.getElementById("addStudentForm").onsubmit = e => {
 
 // Initial load
 loadDB();
+document.addEventListener("DOMContentLoaded", () => {
+  fetchWeather();
+});
+
+async function fetchWeather() {
+  const apiKey = "YOUR_API_KEY_HERE";
+  const city = "Lagos"; // Or your school’s location
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const temp = data.main.temp;
+    const desc = data.weather[0].description;
+    const icon = data.weather[0].icon;
+
+    const weatherInfo = `
+      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}">
+      <strong>${city}</strong>: ${temp}°C, ${desc}
+    `;
+
+    document.getElementById("weatherInfo").innerHTML = weatherInfo;
+  } catch (err) {
+    document.getElementById("weatherInfo").textContent = "Failed to load weather.";
+    console.error("Weather fetch error:", err);
+  }
+}
 
 
 
