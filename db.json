@@ -3,8 +3,8 @@
     {
       "id": 1,
       "name": "Alice Johnson",
-      "contact": "123-456-7890",
-      "address": "123 Maple St",
+      "contact": "0712166552",
+      "address": "010000",
       "attendance": ["2025-06-01", "2025-06-05"],
       "classes": [101],
       "photo": ""
