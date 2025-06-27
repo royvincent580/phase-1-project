@@ -1,7 +1,6 @@
 let state = { role: "student", userId: 1 };
 let db = JSON.parse(localStorage.getItem("db")) || null;
 
-// Load from db.json if not found in localStorage
 async function loadDB() {
   if (!db) {
     const res = await fetch("db.json");
@@ -16,10 +15,8 @@ function saveDB() {
 }
 
 function switchView() {
-  // Hide all role sections first
   document.querySelectorAll(".role-section").forEach(sec => sec.classList.add("hidden"));
 
-  // Only show a section if role is selected
   if (!state.role) return;
 
   document.getElementById(`${state.role}Section`).classList.remove("hidden");
@@ -28,7 +25,6 @@ function switchView() {
   if (state.role === "teacher") loadTeacher();
   if (state.role === "admin") loadAdmin();
 }
-
 
 document.getElementById("roleSwitch").addEventListener("change", e => {
   state.role = e.target.value;
@@ -130,20 +126,7 @@ function loadAdmin() {
   };
 }
 
-// ADD STUDENT
-const modal = document.getElementById("modal");
-document.getElementById("openModal").onclick = () => modal.classList.remove("hidden");
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".close").addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  document.getElementById("openModal").addEventListener("click", () => {
-    modal.classList.remove("hidden");
-  });
-});
-
-
+// ADD STUDENT FORM (in Admin Panel)
 document.getElementById("addStudentForm").onsubmit = e => {
   e.preventDefault();
   const name = e.target.elements["name"].value;
@@ -161,46 +144,13 @@ document.getElementById("addStudentForm").onsubmit = e => {
 
   db.students.push(newStudent);
   saveDB();
-  modal.classList.add("hidden");
   if (state.role === "admin") loadAdmin();
   alert("New student added!");
+  e.target.reset();
 };
 
 // Initial load
-// Initial load
-// Initial load
 loadDB();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("modal");
-  const closeBtn = document.querySelector(".close");
-
-  // Open modal
-  document.getElementById("openModal").addEventListener("click", () => {
-    modal.classList.remove("hidden");
-  });
-
-  // Close modal with 'X'
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  // Close modal by clicking outside content
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.add("hidden");
-    }
-  });
-
-  // Close modal with Escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !modal.classList.contains("hidden")) {
-      modal.classList.add("hidden");
-      document.addEventListener("DOMContentLoaded", loadDB);
-
-    }
-  });
-});
 
 
 
